@@ -1,8 +1,10 @@
 const startBtn = document.querySelector('#start')
+const restartBtn=document.querySelector('#restart')
 const screens = document.querySelectorAll('.screen')
 const timeList = document.querySelector('#time-list')
 const timeEl = document.querySelector('#time')
 const board = document.querySelector('#board')
+const primary=document.querySelector('#primary')
 let time = 0;
 let score = 0
 const colors=['#5BEAEA','#21FE5C','#B9F21D','#710D0D','#EA4CE0','#674CEA']
@@ -12,6 +14,10 @@ const colors=['#5BEAEA','#21FE5C','#B9F21D','#710D0D','#EA4CE0','#674CEA']
 startBtn.addEventListener('click', (event) => {
     event.preventDefault()
     screens[0].classList.add('up')
+})
+
+restartBtn.addEventListener('click',function(){
+    window.location.reload();
 })
 
 timeList.addEventListener('click', event => {
@@ -55,7 +61,9 @@ function setTime(value) {
 
 function finishGame() {
     timeEl.parentNode.classList.add('hide');
-    board.innerHTML = `<h1>Your score: <span class="primary">${score}</span></h1>`
+    screens[2].classList.add('up')
+    primary.innerHTML=`${score}`
+    //board.innerHTML = `<h1>Your score: <span class="primary">${score}</span></h1>`
 }
 
 function createRandomCircle() {
